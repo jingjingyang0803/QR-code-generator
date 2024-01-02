@@ -7,34 +7,40 @@ https://www.npmjs.com/package/qr-image
 https://nodejs.org/api/fs.html
 */
 
-import inquirer from "inquirer";
-import qr from "qr-image";
-import fs from "fs";
+// Importing necessary modules
+import inquirer from "inquirer"; // for user input
+import qr from "qr-image"; // for generating QR code
+import fs from "fs"; // for file system operations
 
+// Using inquirer to prompt the user for input
 inquirer
   .prompt([
-    // Pass your questions
     {
-      message: "Type in your URL: ",
-      name: "URL",
+      // This is the question object for the prompt
+      message: "Type in your URL: ", // The message shown to the user
+      name: "URL", // The key name for the answer object
     },
   ])
   .then((answers) => {
-    // Use user feedback
-    const url = answers.URL;
+    // Handling the user's response
+    const url = answers.URL; // Extracting the URL from the user's input
 
-    var qr_svg = qr.image(url);
-    qr_svg.pipe(fs.createWriteStream("qr_img.png"));
+    // Generating a QR code from the URL
+    var qr_svg = qr.image(url); // Creating a QR code image from the URL
+    qr_svg.pipe(fs.createWriteStream("qr_img.png")); // Saving the QR code as an image file
 
+    // Writing the URL to a text file
     fs.writeFile("URL.txt", url, (err) => {
-      if (err) throw err;
-      console.log("A file containing your URL has been created!");
+      // Creating a file and writing the URL to it
+      if (err) throw err; // Handling any errors during file writing
+      console.log("A file containing your URL has been created!"); // Confirmation message
     });
   })
   .catch((error) => {
+    // Error handling for the inquirer prompt
     if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
+      // Handling errors related to the terminal environment
     } else {
-      // Something else went wrong
+      // Handling other types of errors
     }
   });
