@@ -4,7 +4,7 @@
 
 ## **Overview**
 
-This project is a simple Node.js application that allows users to generate QR codes from URLs. It utilizes the **`inquirer`**, **`qr-image`**, and **`fs`** (File System) modules to prompt users for a URL, generate a QR code, and save both the URL and QR code image to the local file system.
+This project, a course project for course The Complete 2023 Web Development Bootcamp (AppBrewery), is a simple Node.js application that allows users to generate QR codes from URLs. It utilizes the **`inquirer`**, **`qr-image`**, and **`fs`** (File System) modules to prompt users for a URL, generate a QR code, and save both the URL and QR code image to the local file system.
 
 ## **Features**
 
